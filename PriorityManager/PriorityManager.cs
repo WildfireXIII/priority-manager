@@ -22,7 +22,7 @@ namespace PriorityManager
 		// - delete priority
 
 		//private string FILE_NAME = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "./priorities.db";
-		private string FILE_NAME = "/site/wwwroot/priorities.db";
+		//private string FILE_NAME = "/site/wwwroot/priorities.db";
 
 		// member variables
 		private List<Priority> m_pPriorityList = new List<Priority>();
@@ -38,7 +38,7 @@ namespace PriorityManager
 			// order the priorities by current priority
 			Dictionary<Priority, int> pPriorities = m_pPriorityList.ToDictionary(pPriority => pPriority, pPriority => pPriority.CalculateCurrentPriority());
 			var pOrdered = (from entry in pPriorities
-							orderby entry.Value descending
+							orderby entry.Value ascending
 							select entry);
 
 			XElement pRoot = new XElement("Priorities");
